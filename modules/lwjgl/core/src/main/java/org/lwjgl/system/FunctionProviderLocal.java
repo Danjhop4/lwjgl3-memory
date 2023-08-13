@@ -26,6 +26,6 @@ public interface FunctionProviderLocal extends FunctionProvider {
      *
      * @return the function address or 0L if the function is not supported
      */
-    long getFunctionAddress(long handle, ByteBuffer functionName);
+    long getFunctionAddress(long handle, MemorySegment functionName);
 
 }
