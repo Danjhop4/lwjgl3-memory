@@ -5,6 +5,7 @@
 package org.lwjgl.system;
 
 import java.nio.*;
+import java.lang.foreign.MemorySegment;
 
 import static org.lwjgl.system.MemoryStack.*;
 
