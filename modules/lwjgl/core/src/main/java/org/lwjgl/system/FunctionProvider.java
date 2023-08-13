@@ -5,7 +5,7 @@
 package org.lwjgl.system;
 
 import java.nio.*;
-
+import java.lang.foreign.MemorySegment;
 import static org.lwjgl.system.MemoryStack.*;
 
 /** A provider of native function addresses. */
@@ -26,6 +26,6 @@ public interface FunctionProvider {
      *
      * @return the function address or 0L if the function is not supported
      */
-    long getFunctionAddress(ByteBuffer functionName);
+    long getFunctionAddress(MemorySegment functionName);
 
 }
