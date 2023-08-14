@@ -25,14 +25,14 @@ import static org.lwjgl.system.MemoryStack.*;
  * <li>The source region specified by each element of {@code pRegions} <b>must</b> be a region that is contained within {@code srcImage}</li>
  * <li>The destination region specified by each element of {@code pRegions} <b>must</b> be a region that is contained within {@code dstImage}</li>
  * <li>The union of all destination regions, specified by the elements of {@code pRegions}, <b>must</b> not overlap in memory with any texel that <b>may</b> be sampled during the blit operation</li>
- * <li>The <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-format-features">format features</a> of {@code srcImage} <b>must</b> contain {@link VK10#VK_FORMAT_FEATURE_BLIT_SRC_BIT FORMAT_FEATURE_BLIT_SRC_BIT}</li>
- * <li>{@code srcImage} <b>must</b> not use a <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#formats-requiring-sampler-ycbcr-conversion">format that requires a sampler Y′C<sub>B</sub>C<sub>R</sub> conversion</a></li>
+ * <li>The <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-format-features">format features</a> of {@code srcImage} <b>must</b> contain {@link VK10#VK_FORMAT_FEATURE_BLIT_SRC_BIT FORMAT_FEATURE_BLIT_SRC_BIT}</li>
+ * <li>{@code srcImage} <b>must</b> not use a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#formats-requiring-sampler-ycbcr-conversion">format that requires a sampler Y′C<sub>B</sub>C<sub>R</sub> conversion</a></li>
  * <li>{@code srcImage} <b>must</b> have been created with {@link VK10#VK_IMAGE_USAGE_TRANSFER_SRC_BIT IMAGE_USAGE_TRANSFER_SRC_BIT} usage flag</li>
  * <li>If {@code srcImage} is non-sparse then it <b>must</b> be bound completely and contiguously to a single {@code VkDeviceMemory} object</li>
  * <li>{@code srcImageLayout} <b>must</b> specify the layout of the image subresources of {@code srcImage} specified in {@code pRegions} at the time this command is executed on a {@code VkDevice}</li>
  * <li>{@code srcImageLayout} <b>must</b> be {@link KHRSharedPresentableImage#VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR IMAGE_LAYOUT_SHARED_PRESENT_KHR}, {@link VK10#VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL} or {@link VK10#VK_IMAGE_LAYOUT_GENERAL IMAGE_LAYOUT_GENERAL}</li>
- * <li>The <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-format-features">format features</a> of {@code dstImage} <b>must</b> contain {@link VK10#VK_FORMAT_FEATURE_BLIT_DST_BIT FORMAT_FEATURE_BLIT_DST_BIT}</li>
- * <li>{@code dstImage} <b>must</b> not use a <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#formats-requiring-sampler-ycbcr-conversion">format that requires a sampler Y′C<sub>B</sub>C<sub>R</sub> conversion</a></li>
+ * <li>The <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-format-features">format features</a> of {@code dstImage} <b>must</b> contain {@link VK10#VK_FORMAT_FEATURE_BLIT_DST_BIT FORMAT_FEATURE_BLIT_DST_BIT}</li>
+ * <li>{@code dstImage} <b>must</b> not use a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#formats-requiring-sampler-ycbcr-conversion">format that requires a sampler Y′C<sub>B</sub>C<sub>R</sub> conversion</a></li>
  * <li>{@code dstImage} <b>must</b> have been created with {@link VK10#VK_IMAGE_USAGE_TRANSFER_DST_BIT IMAGE_USAGE_TRANSFER_DST_BIT} usage flag</li>
  * <li>If {@code dstImage} is non-sparse then it <b>must</b> be bound completely and contiguously to a single {@code VkDeviceMemory} object</li>
  * <li>{@code dstImageLayout} <b>must</b> specify the layout of the image subresources of {@code dstImage} specified in {@code pRegions} at the time this command is executed on a {@code VkDevice}</li>
@@ -43,8 +43,8 @@ import static org.lwjgl.system.MemoryStack.*;
  * <li>If {@code srcImage} was created with a depth/stencil format, {@code filter} <b>must</b> be {@link VK10#VK_FILTER_NEAREST FILTER_NEAREST}</li>
  * <li>{@code srcImage} <b>must</b> have been created with a {@code samples} value of {@link VK10#VK_SAMPLE_COUNT_1_BIT SAMPLE_COUNT_1_BIT}</li>
  * <li>{@code dstImage} <b>must</b> have been created with a {@code samples} value of {@link VK10#VK_SAMPLE_COUNT_1_BIT SAMPLE_COUNT_1_BIT}</li>
- * <li>If {@code filter} is {@link VK10#VK_FILTER_LINEAR FILTER_LINEAR}, then the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-format-features">format features</a> of {@code srcImage} <b>must</b> contain {@link VK10#VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT}</li>
- * <li>If {@code filter} is {@link EXTFilterCubic#VK_FILTER_CUBIC_EXT FILTER_CUBIC_EXT}, then the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-format-features">format features</a> of {@code srcImage} <b>must</b> contain {@link EXTFilterCubic#VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT}</li>
+ * <li>If {@code filter} is {@link VK10#VK_FILTER_LINEAR FILTER_LINEAR}, then the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-format-features">format features</a> of {@code srcImage} <b>must</b> contain {@link VK10#VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT}</li>
+ * <li>If {@code filter} is {@link EXTFilterCubic#VK_FILTER_CUBIC_EXT FILTER_CUBIC_EXT}, then the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#resources-image-format-features">format features</a> of {@code srcImage} <b>must</b> contain {@link EXTFilterCubic#VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT}</li>
  * <li>If {@code filter} is {@link EXTFilterCubic#VK_FILTER_CUBIC_EXT FILTER_CUBIC_EXT}, {@code srcImage} <b>must</b> be of type {@link VK10#VK_IMAGE_TYPE_2D IMAGE_TYPE_2D}</li>
  * <li>The {@code srcSubresource.mipLevel} member of each element of {@code pRegions} <b>must</b> be less than the {@code mipLevels} specified in {@link VkImageCreateInfo} when {@code srcImage} was created</li>
  * <li>The {@code dstSubresource.mipLevel} member of each element of {@code pRegions} <b>must</b> be less than the {@code mipLevels} specified in {@link VkImageCreateInfo} when {@code dstImage} was created</li>
@@ -66,7 +66,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * <li>If {@code dstImage} is of type {@link VK10#VK_IMAGE_TYPE_1D IMAGE_TYPE_1D} or {@link VK10#VK_IMAGE_TYPE_2D IMAGE_TYPE_2D}, then for each element of {@code pRegions}, {@code dstOffsets}[0].z <b>must</b> be 0 and {@code dstOffsets}[1].z <b>must</b> be 1</li>
  * <li>If any element of {@code pRegions} contains {@link VkCopyCommandTransformInfoQCOM} in its {@code pNext} chain, then {@code srcImage} and {@code dstImage} <b>must</b> not be block-compressed images</li>
  * <li>If any element of {@code pRegions} contains {@link VkCopyCommandTransformInfoQCOM} in its {@code pNext} chain, then {@code srcImage} <b>must</b> be of type {@link VK10#VK_IMAGE_TYPE_2D IMAGE_TYPE_2D}</li>
- * <li>If any element of {@code pRegions} contains {@link VkCopyCommandTransformInfoQCOM} in its {@code pNext} chain, then {@code srcImage} <b>must</b> not have a <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#formats-requiring-sampler-ycbcr-conversion">multi-planar format</a></li>
+ * <li>If any element of {@code pRegions} contains {@link VkCopyCommandTransformInfoQCOM} in its {@code pNext} chain, then {@code srcImage} <b>must</b> not have a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#formats-requiring-sampler-ycbcr-conversion">multi-planar format</a></li>
  * </ul>
  * 
  * <h5>Valid Usage (Implicit)</h5>
@@ -103,7 +103,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     VkFilter {@link #filter};
  * }</code></pre>
  */
-public class VkBlitImageInfo2 extends Struct implements NativeResource {
+public class VkBlitImageInfo2 extends Struct<VkBlitImageInfo2> implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -148,6 +148,15 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
         REGIONCOUNT = layout.offsetof(6);
         PREGIONS = layout.offsetof(7);
         FILTER = layout.offsetof(8);
+    }
+
+    protected VkBlitImageInfo2(long address, @Nullable ByteBuffer container) {
+        super(address, container);
+    }
+
+    @Override
+    protected VkBlitImageInfo2 create(long address, @Nullable ByteBuffer container) {
+        return new VkBlitImageInfo2(address, container);
     }
 
     /**
@@ -249,29 +258,29 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
 
     /** Returns a new {@code VkBlitImageInfo2} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static VkBlitImageInfo2 malloc() {
-        return wrap(VkBlitImageInfo2.class, nmemAllocChecked(SIZEOF));
+        return new VkBlitImageInfo2(nmemAllocChecked(SIZEOF), null);
     }
 
     /** Returns a new {@code VkBlitImageInfo2} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static VkBlitImageInfo2 calloc() {
-        return wrap(VkBlitImageInfo2.class, nmemCallocChecked(1, SIZEOF));
+        return new VkBlitImageInfo2(nmemCallocChecked(1, SIZEOF), null);
     }
 
     /** Returns a new {@code VkBlitImageInfo2} instance allocated with {@link BufferUtils}. */
     public static VkBlitImageInfo2 create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return wrap(VkBlitImageInfo2.class, memAddress(container), container);
+        return new VkBlitImageInfo2(memAddress(container), container);
     }
 
     /** Returns a new {@code VkBlitImageInfo2} instance for the specified memory address. */
     public static VkBlitImageInfo2 create(long address) {
-        return wrap(VkBlitImageInfo2.class, address);
+        return new VkBlitImageInfo2(address, null);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkBlitImageInfo2 createSafe(long address) {
-        return address == NULL ? null : wrap(VkBlitImageInfo2.class, address);
+        return address == NULL ? null : new VkBlitImageInfo2(address, null);
     }
 
     /**
@@ -280,7 +289,7 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkBlitImageInfo2.Buffer malloc(int capacity) {
-        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -289,7 +298,7 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkBlitImageInfo2.Buffer calloc(int capacity) {
-        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
+        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -299,7 +308,7 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
      */
     public static VkBlitImageInfo2.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return wrap(Buffer.class, memAddress(container), capacity, container);
+        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
     }
 
     /**
@@ -309,13 +318,13 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkBlitImageInfo2.Buffer create(long address, int capacity) {
-        return wrap(Buffer.class, address, capacity);
+        return new Buffer(address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkBlitImageInfo2.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : wrap(Buffer.class, address, capacity);
+        return address == NULL ? null : new Buffer(address, capacity);
     }
 
     /**
@@ -324,7 +333,7 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
      * @param stack the stack from which to allocate
      */
     public static VkBlitImageInfo2 malloc(MemoryStack stack) {
-        return wrap(VkBlitImageInfo2.class, stack.nmalloc(ALIGNOF, SIZEOF));
+        return new VkBlitImageInfo2(stack.nmalloc(ALIGNOF, SIZEOF), null);
     }
 
     /**
@@ -333,7 +342,7 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
      * @param stack the stack from which to allocate
      */
     public static VkBlitImageInfo2 calloc(MemoryStack stack) {
-        return wrap(VkBlitImageInfo2.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
+        return new VkBlitImageInfo2(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
     }
 
     /**
@@ -343,7 +352,7 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkBlitImageInfo2.Buffer malloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -353,7 +362,7 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkBlitImageInfo2.Buffer calloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -415,9 +424,9 @@ public class VkBlitImageInfo2 extends Struct implements NativeResource {
         /**
          * Creates a new {@code VkBlitImageInfo2.Buffer} instance backed by the specified container.
          *
-         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link VkBlitImageInfo2#SIZEOF}, and its mark will be undefined.
+         * by {@link VkBlitImageInfo2#SIZEOF}, and its mark will be undefined.</p>
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

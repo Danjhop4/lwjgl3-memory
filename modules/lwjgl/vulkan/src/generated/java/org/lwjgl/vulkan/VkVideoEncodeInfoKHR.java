@@ -23,12 +23,12 @@ import static org.lwjgl.system.MemoryStack.*;
  * 
  * <p>The coded size of the encode operation is specified in {@code codedExtent} of {@code srcPictureResource}.</p>
  * 
- * <p>Multiple {@link KHRVideoEncodeQueue#vkCmdEncodeVideoKHR CmdEncodeVideoKHR} commands <b>may</b> be recorded within a Vulkan Video Encode Context. The execution of each {@link KHRVideoEncodeQueue#vkCmdEncodeVideoKHR CmdEncodeVideoKHR} command will result in generating codec-specific bitstream units. These bitstream units are generated consecutively into the bitstream buffer specified in {@code dstBuffer} of a {@link VkVideoEncodeInfoKHR} structure within the {@link KHRVideoQueue#vkCmdBeginVideoCodingKHR CmdBeginVideoCodingKHR} command. The produced bitstream is the sum of all these bitstream units, including any padding between the bitstream units. Any bitstream padding <b>must</b> be filled with data compliant to the codec standard so as not to cause any syntax errors during decoding of the bitstream units with the padding included. The range of the bitstream buffer written <b>can</b> be queried via <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#queries-video-encode-feedback">video encode feedback queries</a>.</p>
+ * <p>Multiple {@link KHRVideoEncodeQueue#vkCmdEncodeVideoKHR CmdEncodeVideoKHR} commands <b>may</b> be recorded within a Vulkan Video Encode Context. The execution of each {@link KHRVideoEncodeQueue#vkCmdEncodeVideoKHR CmdEncodeVideoKHR} command will result in generating codec-specific bitstream units. These bitstream units are generated consecutively into the bitstream buffer specified in {@code dstBuffer} of a {@link VkVideoEncodeInfoKHR} structure within the {@link KHRVideoQueue#vkCmdBeginVideoCodingKHR CmdBeginVideoCodingKHR} command. The produced bitstream is the sum of all these bitstream units, including any padding between the bitstream units. Any bitstream padding <b>must</b> be filled with data compliant to the codec standard so as not to cause any syntax errors during decoding of the bitstream units with the padding included. The range of the bitstream buffer written <b>can</b> be queried via <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#queries-video-encode-feedback">video encode feedback queries</a>.</p>
  * 
  * <h5>Valid Usage</h5>
  * 
  * <ul>
- * <li>The bound video session <b>must</b> not be in <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#video-session-uninitialized">uninitialized</a> state at the time the command is executed on the device</li>
+ * <li>The bound video session <b>must</b> not be in <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#video-session-uninitialized">uninitialized</a> state at the time the command is executed on the device</li>
  * </ul>
  * 
  * <h5>Valid Usage (Implicit)</h5>
@@ -66,7 +66,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     uint32_t {@link #precedingExternallyEncodedBytes};
  * }</code></pre>
  */
-public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
+public class VkVideoEncodeInfoKHR extends Struct<VkVideoEncodeInfoKHR> implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -122,6 +122,15 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
         PRECEDINGEXTERNALLYENCODEDBYTES = layout.offsetof(11);
     }
 
+    protected VkVideoEncodeInfoKHR(long address, @Nullable ByteBuffer container) {
+        super(address, container);
+    }
+
+    @Override
+    protected VkVideoEncodeInfoKHR create(long address, @Nullable ByteBuffer container) {
+        return new VkVideoEncodeInfoKHR(address, container);
+    }
+
     /**
      * Creates a {@code VkVideoEncodeInfoKHR} instance at the current position of the specified {@link ByteBuffer} container. Changes to the buffer's content will be
      * visible to the struct instance and vice versa.
@@ -156,7 +165,7 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
     /** the maximum size in bytes of the encoded bitstream written to {@code dstBuffer}, starting from {@code dstBufferOffset}. {@code dstBufferRange}’s value <b>must</b> be aligned to {@link VkVideoCapabilitiesKHR}{@code ::minBitstreamBufferSizeAlignment}, as reported by the implementation. */
     @NativeType("VkDeviceSize")
     public long dstBufferRange() { return ndstBufferRange(address()); }
-    /** the Picture Resource of the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#encode-input-picture">Input Picture</a> to be encoded by the operation. */
+    /** the Picture Resource of the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#encode-input-picture">Input Picture</a> to be encoded by the operation. */
     public VkVideoPictureResourceInfoKHR srcPictureResource() { return nsrcPictureResource(address()); }
     /** a pointer to a {@link VkVideoReferenceSlotInfoKHR} structure used for generating a reconstructed reference slot and Picture Resource. {@code pSetupReferenceSlot→slotIndex} specifies the slot index number to use as a target for producing the Reconstructed (DPB) data. {@code pSetupReferenceSlot} <b>must</b> be one of the entries provided in {@link VkVideoBeginCodingInfoKHR} via the {@code pReferenceSlots} within the {@link KHRVideoQueue#vkCmdBeginVideoCodingKHR CmdBeginVideoCodingKHR} command that established the Vulkan Video Encode Context for this command. */
     @Nullable
@@ -249,29 +258,29 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
 
     /** Returns a new {@code VkVideoEncodeInfoKHR} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static VkVideoEncodeInfoKHR malloc() {
-        return wrap(VkVideoEncodeInfoKHR.class, nmemAllocChecked(SIZEOF));
+        return new VkVideoEncodeInfoKHR(nmemAllocChecked(SIZEOF), null);
     }
 
     /** Returns a new {@code VkVideoEncodeInfoKHR} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static VkVideoEncodeInfoKHR calloc() {
-        return wrap(VkVideoEncodeInfoKHR.class, nmemCallocChecked(1, SIZEOF));
+        return new VkVideoEncodeInfoKHR(nmemCallocChecked(1, SIZEOF), null);
     }
 
     /** Returns a new {@code VkVideoEncodeInfoKHR} instance allocated with {@link BufferUtils}. */
     public static VkVideoEncodeInfoKHR create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return wrap(VkVideoEncodeInfoKHR.class, memAddress(container), container);
+        return new VkVideoEncodeInfoKHR(memAddress(container), container);
     }
 
     /** Returns a new {@code VkVideoEncodeInfoKHR} instance for the specified memory address. */
     public static VkVideoEncodeInfoKHR create(long address) {
-        return wrap(VkVideoEncodeInfoKHR.class, address);
+        return new VkVideoEncodeInfoKHR(address, null);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkVideoEncodeInfoKHR createSafe(long address) {
-        return address == NULL ? null : wrap(VkVideoEncodeInfoKHR.class, address);
+        return address == NULL ? null : new VkVideoEncodeInfoKHR(address, null);
     }
 
     /**
@@ -280,7 +289,7 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkVideoEncodeInfoKHR.Buffer malloc(int capacity) {
-        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -289,7 +298,7 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkVideoEncodeInfoKHR.Buffer calloc(int capacity) {
-        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
+        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -299,7 +308,7 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
      */
     public static VkVideoEncodeInfoKHR.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return wrap(Buffer.class, memAddress(container), capacity, container);
+        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
     }
 
     /**
@@ -309,13 +318,13 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkVideoEncodeInfoKHR.Buffer create(long address, int capacity) {
-        return wrap(Buffer.class, address, capacity);
+        return new Buffer(address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkVideoEncodeInfoKHR.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : wrap(Buffer.class, address, capacity);
+        return address == NULL ? null : new Buffer(address, capacity);
     }
 
     /**
@@ -324,7 +333,7 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
      * @param stack the stack from which to allocate
      */
     public static VkVideoEncodeInfoKHR malloc(MemoryStack stack) {
-        return wrap(VkVideoEncodeInfoKHR.class, stack.nmalloc(ALIGNOF, SIZEOF));
+        return new VkVideoEncodeInfoKHR(stack.nmalloc(ALIGNOF, SIZEOF), null);
     }
 
     /**
@@ -333,7 +342,7 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
      * @param stack the stack from which to allocate
      */
     public static VkVideoEncodeInfoKHR calloc(MemoryStack stack) {
-        return wrap(VkVideoEncodeInfoKHR.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
+        return new VkVideoEncodeInfoKHR(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
     }
 
     /**
@@ -343,7 +352,7 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkVideoEncodeInfoKHR.Buffer malloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -353,7 +362,7 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkVideoEncodeInfoKHR.Buffer calloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -429,9 +438,9 @@ public class VkVideoEncodeInfoKHR extends Struct implements NativeResource {
         /**
          * Creates a new {@code VkVideoEncodeInfoKHR.Buffer} instance backed by the specified container.
          *
-         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link VkVideoEncodeInfoKHR#SIZEOF}, and its mark will be undefined.
+         * by {@link VkVideoEncodeInfoKHR#SIZEOF}, and its mark will be undefined.</p>
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

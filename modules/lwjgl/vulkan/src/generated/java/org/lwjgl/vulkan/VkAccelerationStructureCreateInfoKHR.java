@@ -55,7 +55,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * <li>{@code offset} <b>must</b> be a multiple of 256 bytes</li>
  * <li>If {@link NVRayTracingMotionBlur#VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV} is set in {@code flags} and {@code type} is {@link KHRAccelerationStructure#VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR}, one member of the {@code pNext} chain <b>must</b> be a pointer to a valid instance of {@link VkAccelerationStructureMotionInfoNV}</li>
  * <li>If any geometry includes {@link VkAccelerationStructureGeometryMotionTrianglesDataNV} then {@code flags} <b>must</b> contain {@link NVRayTracingMotionBlur#VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV}</li>
- * <li>If {@code createFlags} includes {@link EXTDescriptorBuffer#VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT}, the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-descriptorBufferCaptureReplay">{@code descriptorBufferCaptureReplay}</a> feature <b>must</b> be enabled</li>
+ * <li>If {@code createFlags} includes {@link EXTDescriptorBuffer#VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT}, the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-descriptorBufferCaptureReplay">{@code descriptorBufferCaptureReplay}</a> feature <b>must</b> be enabled</li>
  * <li>If the {@code pNext} chain includes a {@link VkOpaqueCaptureDescriptorDataCreateInfoEXT} structure, {@code createFlags} <b>must</b> contain {@link EXTDescriptorBuffer#VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT}</li>
  * </ul>
  * 
@@ -88,7 +88,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     VkDeviceAddress {@link #deviceAddress};
  * }</code></pre>
  */
-public class VkAccelerationStructureCreateInfoKHR extends Struct implements NativeResource {
+public class VkAccelerationStructureCreateInfoKHR extends Struct<VkAccelerationStructureCreateInfoKHR> implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -132,6 +132,15 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
         DEVICEADDRESS = layout.offsetof(7);
     }
 
+    protected VkAccelerationStructureCreateInfoKHR(long address, @Nullable ByteBuffer container) {
+        super(address, container);
+    }
+
+    @Override
+    protected VkAccelerationStructureCreateInfoKHR create(long address, @Nullable ByteBuffer container) {
+        return new VkAccelerationStructureCreateInfoKHR(address, container);
+    }
+
     /**
      * Creates a {@code VkAccelerationStructureCreateInfoKHR} instance at the current position of the specified {@link ByteBuffer} container. Changes to the buffer's content will be
      * visible to the struct instance and vice versa.
@@ -166,7 +175,7 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
     /** a {@code VkAccelerationStructureTypeKHR} value specifying the type of acceleration structure that will be created. */
     @NativeType("VkAccelerationStructureTypeKHR")
     public int type() { return ntype(address()); }
-    /** the device address requested for the acceleration structure if the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-accelerationStructureCaptureReplay">{@code accelerationStructureCaptureReplay}</a> feature is being used. */
+    /** the device address requested for the acceleration structure if the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-accelerationStructureCaptureReplay">{@code accelerationStructureCaptureReplay}</a> feature is being used. */
     @NativeType("VkDeviceAddress")
     public long deviceAddress() { return ndeviceAddress(address()); }
 
@@ -232,29 +241,29 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
 
     /** Returns a new {@code VkAccelerationStructureCreateInfoKHR} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static VkAccelerationStructureCreateInfoKHR malloc() {
-        return wrap(VkAccelerationStructureCreateInfoKHR.class, nmemAllocChecked(SIZEOF));
+        return new VkAccelerationStructureCreateInfoKHR(nmemAllocChecked(SIZEOF), null);
     }
 
     /** Returns a new {@code VkAccelerationStructureCreateInfoKHR} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static VkAccelerationStructureCreateInfoKHR calloc() {
-        return wrap(VkAccelerationStructureCreateInfoKHR.class, nmemCallocChecked(1, SIZEOF));
+        return new VkAccelerationStructureCreateInfoKHR(nmemCallocChecked(1, SIZEOF), null);
     }
 
     /** Returns a new {@code VkAccelerationStructureCreateInfoKHR} instance allocated with {@link BufferUtils}. */
     public static VkAccelerationStructureCreateInfoKHR create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return wrap(VkAccelerationStructureCreateInfoKHR.class, memAddress(container), container);
+        return new VkAccelerationStructureCreateInfoKHR(memAddress(container), container);
     }
 
     /** Returns a new {@code VkAccelerationStructureCreateInfoKHR} instance for the specified memory address. */
     public static VkAccelerationStructureCreateInfoKHR create(long address) {
-        return wrap(VkAccelerationStructureCreateInfoKHR.class, address);
+        return new VkAccelerationStructureCreateInfoKHR(address, null);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkAccelerationStructureCreateInfoKHR createSafe(long address) {
-        return address == NULL ? null : wrap(VkAccelerationStructureCreateInfoKHR.class, address);
+        return address == NULL ? null : new VkAccelerationStructureCreateInfoKHR(address, null);
     }
 
     /**
@@ -263,7 +272,7 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
      * @param capacity the buffer capacity
      */
     public static VkAccelerationStructureCreateInfoKHR.Buffer malloc(int capacity) {
-        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -272,7 +281,7 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
      * @param capacity the buffer capacity
      */
     public static VkAccelerationStructureCreateInfoKHR.Buffer calloc(int capacity) {
-        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
+        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -282,7 +291,7 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
      */
     public static VkAccelerationStructureCreateInfoKHR.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return wrap(Buffer.class, memAddress(container), capacity, container);
+        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
     }
 
     /**
@@ -292,13 +301,13 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
      * @param capacity the buffer capacity
      */
     public static VkAccelerationStructureCreateInfoKHR.Buffer create(long address, int capacity) {
-        return wrap(Buffer.class, address, capacity);
+        return new Buffer(address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkAccelerationStructureCreateInfoKHR.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : wrap(Buffer.class, address, capacity);
+        return address == NULL ? null : new Buffer(address, capacity);
     }
 
     /**
@@ -307,7 +316,7 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
      * @param stack the stack from which to allocate
      */
     public static VkAccelerationStructureCreateInfoKHR malloc(MemoryStack stack) {
-        return wrap(VkAccelerationStructureCreateInfoKHR.class, stack.nmalloc(ALIGNOF, SIZEOF));
+        return new VkAccelerationStructureCreateInfoKHR(stack.nmalloc(ALIGNOF, SIZEOF), null);
     }
 
     /**
@@ -316,7 +325,7 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
      * @param stack the stack from which to allocate
      */
     public static VkAccelerationStructureCreateInfoKHR calloc(MemoryStack stack) {
-        return wrap(VkAccelerationStructureCreateInfoKHR.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
+        return new VkAccelerationStructureCreateInfoKHR(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
     }
 
     /**
@@ -326,7 +335,7 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
      * @param capacity the buffer capacity
      */
     public static VkAccelerationStructureCreateInfoKHR.Buffer malloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -336,7 +345,7 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
      * @param capacity the buffer capacity
      */
     public static VkAccelerationStructureCreateInfoKHR.Buffer calloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -385,9 +394,9 @@ public class VkAccelerationStructureCreateInfoKHR extends Struct implements Nati
         /**
          * Creates a new {@code VkAccelerationStructureCreateInfoKHR.Buffer} instance backed by the specified container.
          *
-         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link VkAccelerationStructureCreateInfoKHR#SIZEOF}, and its mark will be undefined.
+         * by {@link VkAccelerationStructureCreateInfoKHR#SIZEOF}, and its mark will be undefined.</p>
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

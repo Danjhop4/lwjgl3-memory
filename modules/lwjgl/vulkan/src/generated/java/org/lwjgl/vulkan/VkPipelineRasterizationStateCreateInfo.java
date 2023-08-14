@@ -20,13 +20,13 @@ import static org.lwjgl.system.MemoryStack.*;
  * 
  * <h5>Description</h5>
  * 
- * <p>The application <b>can</b> also add a {@link VkPipelineRasterizationStateRasterizationOrderAMD} structure to the {@code pNext} chain of a {@link VkPipelineRasterizationStateCreateInfo} structure. This structure enables selecting the rasterization order to use when rendering with the corresponding graphics pipeline as described in <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#primsrast-order">Rasterization Order</a>.</p>
+ * <p>The application <b>can</b> also add a {@link VkPipelineRasterizationStateRasterizationOrderAMD} structure to the {@code pNext} chain of a {@link VkPipelineRasterizationStateCreateInfo} structure. This structure enables selecting the rasterization order to use when rendering with the corresponding graphics pipeline as described in <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#primsrast-order">Rasterization Order</a>.</p>
  * 
  * <h5>Valid Usage</h5>
  * 
  * <ul>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-depthClamp">{@code depthClamp}</a> feature is not enabled, {@code depthClampEnable} <b>must</b> be {@link VK10#VK_FALSE FALSE}</li>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-fillModeNonSolid">{@code fillModeNonSolid}</a> feature is not enabled, {@code polygonMode} <b>must</b> be {@link VK10#VK_POLYGON_MODE_FILL POLYGON_MODE_FILL} or {@link NVFillRectangle#VK_POLYGON_MODE_FILL_RECTANGLE_NV POLYGON_MODE_FILL_RECTANGLE_NV}</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-depthClamp">{@code depthClamp}</a> feature is not enabled, {@code depthClampEnable} <b>must</b> be {@link VK10#VK_FALSE FALSE}</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-fillModeNonSolid">{@code fillModeNonSolid}</a> feature is not enabled, {@code polygonMode} <b>must</b> be {@link VK10#VK_POLYGON_MODE_FILL POLYGON_MODE_FILL} or {@link NVFillRectangle#VK_POLYGON_MODE_FILL_RECTANGLE_NV POLYGON_MODE_FILL_RECTANGLE_NV}</li>
  * <li>If the {@link NVFillRectangle VK_NV_fill_rectangle} extension is not enabled, {@code polygonMode} <b>must</b> not be {@link NVFillRectangle#VK_POLYGON_MODE_FILL_RECTANGLE_NV POLYGON_MODE_FILL_RECTANGLE_NV}</li>
  * <li>If the {@link KHRPortabilitySubset VK_KHR_portability_subset} extension is enabled, and {@link VkPhysicalDevicePortabilitySubsetFeaturesKHR}{@code ::pointPolygons} is {@link VK10#VK_FALSE FALSE}, and {@code rasterizerDiscardEnable} is {@link VK10#VK_FALSE FALSE}, {@code polygonMode} <b>must</b> not be {@link VK10#VK_POLYGON_MODE_POINT POLYGON_MODE_POINT}</li>
  * </ul>
@@ -66,7 +66,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     float {@link #lineWidth};
  * }</code></pre>
  */
-public class VkPipelineRasterizationStateCreateInfo extends Struct implements NativeResource {
+public class VkPipelineRasterizationStateCreateInfo extends Struct<VkPipelineRasterizationStateCreateInfo> implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -125,6 +125,15 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
         LINEWIDTH = layout.offsetof(12);
     }
 
+    protected VkPipelineRasterizationStateCreateInfo(long address, @Nullable ByteBuffer container) {
+        super(address, container);
+    }
+
+    @Override
+    protected VkPipelineRasterizationStateCreateInfo create(long address, @Nullable ByteBuffer container) {
+        return new VkPipelineRasterizationStateCreateInfo(address, container);
+    }
+
     /**
      * Creates a {@code VkPipelineRasterizationStateCreateInfo} instance at the current position of the specified {@link ByteBuffer} container. Changes to the buffer's content will be
      * visible to the struct instance and vice versa.
@@ -147,7 +156,7 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
     /** reserved for future use. */
     @NativeType("VkPipelineRasterizationStateCreateFlags")
     public int flags() { return nflags(address()); }
-    /** controls whether to clamp the fragment’s depth values as described in <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#fragops-depth">Depth Test</a>. If the pipeline is not created with {@link VkPipelineRasterizationDepthClipStateCreateInfoEXT} present then enabling depth clamp will also disable clipping primitives to the z planes of the frustrum as described in <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#vertexpostproc-clipping">Primitive Clipping</a>. Otherwise depth clipping is controlled by the state set in {@link VkPipelineRasterizationDepthClipStateCreateInfoEXT}. */
+    /** controls whether to clamp the fragment’s depth values as described in <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#fragops-depth">Depth Test</a>. If the pipeline is not created with {@link VkPipelineRasterizationDepthClipStateCreateInfoEXT} present then enabling depth clamp will also disable clipping primitives to the z planes of the frustrum as described in <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#vertexpostproc-clipping">Primitive Clipping</a>. Otherwise depth clipping is controlled by the state set in {@link VkPipelineRasterizationDepthClipStateCreateInfoEXT}. */
     @NativeType("VkBool32")
     public boolean depthClampEnable() { return ndepthClampEnable(address()) != 0; }
     /** controls whether primitives are discarded immediately before the rasterization stage. */
@@ -264,29 +273,29 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
 
     /** Returns a new {@code VkPipelineRasterizationStateCreateInfo} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static VkPipelineRasterizationStateCreateInfo malloc() {
-        return wrap(VkPipelineRasterizationStateCreateInfo.class, nmemAllocChecked(SIZEOF));
+        return new VkPipelineRasterizationStateCreateInfo(nmemAllocChecked(SIZEOF), null);
     }
 
     /** Returns a new {@code VkPipelineRasterizationStateCreateInfo} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static VkPipelineRasterizationStateCreateInfo calloc() {
-        return wrap(VkPipelineRasterizationStateCreateInfo.class, nmemCallocChecked(1, SIZEOF));
+        return new VkPipelineRasterizationStateCreateInfo(nmemCallocChecked(1, SIZEOF), null);
     }
 
     /** Returns a new {@code VkPipelineRasterizationStateCreateInfo} instance allocated with {@link BufferUtils}. */
     public static VkPipelineRasterizationStateCreateInfo create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return wrap(VkPipelineRasterizationStateCreateInfo.class, memAddress(container), container);
+        return new VkPipelineRasterizationStateCreateInfo(memAddress(container), container);
     }
 
     /** Returns a new {@code VkPipelineRasterizationStateCreateInfo} instance for the specified memory address. */
     public static VkPipelineRasterizationStateCreateInfo create(long address) {
-        return wrap(VkPipelineRasterizationStateCreateInfo.class, address);
+        return new VkPipelineRasterizationStateCreateInfo(address, null);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkPipelineRasterizationStateCreateInfo createSafe(long address) {
-        return address == NULL ? null : wrap(VkPipelineRasterizationStateCreateInfo.class, address);
+        return address == NULL ? null : new VkPipelineRasterizationStateCreateInfo(address, null);
     }
 
     /**
@@ -295,7 +304,7 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
      * @param capacity the buffer capacity
      */
     public static VkPipelineRasterizationStateCreateInfo.Buffer malloc(int capacity) {
-        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -304,7 +313,7 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
      * @param capacity the buffer capacity
      */
     public static VkPipelineRasterizationStateCreateInfo.Buffer calloc(int capacity) {
-        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
+        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -314,7 +323,7 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
      */
     public static VkPipelineRasterizationStateCreateInfo.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return wrap(Buffer.class, memAddress(container), capacity, container);
+        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
     }
 
     /**
@@ -324,13 +333,13 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
      * @param capacity the buffer capacity
      */
     public static VkPipelineRasterizationStateCreateInfo.Buffer create(long address, int capacity) {
-        return wrap(Buffer.class, address, capacity);
+        return new Buffer(address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkPipelineRasterizationStateCreateInfo.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : wrap(Buffer.class, address, capacity);
+        return address == NULL ? null : new Buffer(address, capacity);
     }
 
     // -----------------------------------
@@ -358,7 +367,7 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
      * @param stack the stack from which to allocate
      */
     public static VkPipelineRasterizationStateCreateInfo malloc(MemoryStack stack) {
-        return wrap(VkPipelineRasterizationStateCreateInfo.class, stack.nmalloc(ALIGNOF, SIZEOF));
+        return new VkPipelineRasterizationStateCreateInfo(stack.nmalloc(ALIGNOF, SIZEOF), null);
     }
 
     /**
@@ -367,7 +376,7 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
      * @param stack the stack from which to allocate
      */
     public static VkPipelineRasterizationStateCreateInfo calloc(MemoryStack stack) {
-        return wrap(VkPipelineRasterizationStateCreateInfo.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
+        return new VkPipelineRasterizationStateCreateInfo(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
     }
 
     /**
@@ -377,7 +386,7 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
      * @param capacity the buffer capacity
      */
     public static VkPipelineRasterizationStateCreateInfo.Buffer malloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -387,7 +396,7 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
      * @param capacity the buffer capacity
      */
     public static VkPipelineRasterizationStateCreateInfo.Buffer calloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -456,9 +465,9 @@ public class VkPipelineRasterizationStateCreateInfo extends Struct implements Na
         /**
          * Creates a new {@code VkPipelineRasterizationStateCreateInfo.Buffer} instance backed by the specified container.
          *
-         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link VkPipelineRasterizationStateCreateInfo#SIZEOF}, and its mark will be undefined.
+         * by {@link VkPipelineRasterizationStateCreateInfo#SIZEOF}, and its mark will be undefined.</p>
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

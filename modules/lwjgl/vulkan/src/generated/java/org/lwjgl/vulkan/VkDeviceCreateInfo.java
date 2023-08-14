@@ -40,17 +40,17 @@ import static org.lwjgl.system.MemoryStack.*;
  * <li>If {@code ppEnabledExtensionNames} contains {@code "VK_EXT_shader_viewport_index_layer"} and the {@code pNext} chain includes a {@link VkPhysicalDeviceVulkan12Features} structure, then {@link VkPhysicalDeviceVulkan12Features}{@code ::shaderOutputViewportIndex} and {@link VkPhysicalDeviceVulkan12Features}{@code ::shaderOutputLayer} <b>must</b> both be {@link VK10#VK_TRUE TRUE}</li>
  * <li>If the {@code pNext} chain includes a {@link VkPhysicalDeviceVulkan13Features} structure, then it <b>must</b> not include a {@link VkPhysicalDeviceDynamicRenderingFeatures}, {@link VkPhysicalDeviceImageRobustnessFeatures}, {@link VkPhysicalDeviceInlineUniformBlockFeatures}, {@link VkPhysicalDeviceMaintenance4Features}, {@link VkPhysicalDevicePipelineCreationCacheControlFeatures}, {@link VkPhysicalDevicePrivateDataFeatures}, {@link VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures}, {@link VkPhysicalDeviceShaderIntegerDotProductFeatures}, {@link VkPhysicalDeviceShaderTerminateInvocationFeatures}, {@link VkPhysicalDeviceSubgroupSizeControlFeatures}, {@link VkPhysicalDeviceSynchronization2Features}, {@link VkPhysicalDeviceTextureCompressionASTCHDRFeatures}, or {@link VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures} structure</li>
  * <li>If the {@link KHRPortabilitySubset VK_KHR_portability_subset} extension is included in {@code pProperties} of {@link VK10#vkEnumerateDeviceExtensionProperties EnumerateDeviceExtensionProperties}, {@code ppEnabledExtensionNames} <b>must</b> include {@code "VK_KHR_portability_subset"}</li>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shadingRateImage">{@code shadingRateImage}</a> feature is enabled, the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-pipelineFragmentShadingRate">{@code pipelineFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shadingRateImage">{@code shadingRateImage}</a> feature is enabled, the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-primitiveFragmentShadingRate">{@code primitiveFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shadingRateImage">{@code shadingRateImage}</a> feature is enabled, the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-attachmentFragmentShadingRate">{@code attachmentFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-fragmentDensityMap">{@code fragmentDensityMap}</a> feature is enabled, the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-pipelineFragmentShadingRate">{@code pipelineFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-fragmentDensityMap">{@code fragmentDensityMap}</a> feature is enabled, the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-primitiveFragmentShadingRate">{@code primitiveFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-fragmentDensityMap">{@code fragmentDensityMap}</a> feature is enabled, the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-attachmentFragmentShadingRate">{@code attachmentFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
- * <li>If <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-sparseImageInt64Atomics">{@code sparseImageInt64Atomics}</a> is enabled, <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shaderImageInt64Atomics">{@code shaderImageInt64Atomics}</a> <b>must</b> be enabled</li>
- * <li>If <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-sparseImageFloat32Atomics">{@code sparseImageFloat32Atomics}</a> is enabled, <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shaderImageFloat32Atomics">{@code shaderImageFloat32Atomics}</a> <b>must</b> be enabled</li>
- * <li>If <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-sparseImageFloat32AtomicAdd">{@code sparseImageFloat32AtomicAdd}</a> is enabled, <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shaderImageFloat32AtomicAdd">{@code shaderImageFloat32AtomicAdd}</a> <b>must</b> be enabled</li>
- * <li>If <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-sparseImageFloat32AtomicMinMax">{@code sparseImageFloat32AtomicMinMax}</a> is enabled, <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shaderImageFloat32AtomicMinMax">{@code shaderImageFloat32AtomicMinMax}</a> <b>must</b> be enabled</li>
- * <li>If <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-descriptorBuffer">{@code descriptorBuffer}</a> is enabled, {@code ppEnabledExtensionNames} <b>must</b> not contain {@link AMDShaderFragmentMask VK_AMD_shader_fragment_mask}</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shadingRateImage">{@code shadingRateImage}</a> feature is enabled, the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-pipelineFragmentShadingRate">{@code pipelineFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shadingRateImage">{@code shadingRateImage}</a> feature is enabled, the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-primitiveFragmentShadingRate">{@code primitiveFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shadingRateImage">{@code shadingRateImage}</a> feature is enabled, the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-attachmentFragmentShadingRate">{@code attachmentFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-fragmentDensityMap">{@code fragmentDensityMap}</a> feature is enabled, the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-pipelineFragmentShadingRate">{@code pipelineFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-fragmentDensityMap">{@code fragmentDensityMap}</a> feature is enabled, the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-primitiveFragmentShadingRate">{@code primitiveFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-fragmentDensityMap">{@code fragmentDensityMap}</a> feature is enabled, the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-attachmentFragmentShadingRate">{@code attachmentFragmentShadingRate}</a> feature <b>must</b> not be enabled</li>
+ * <li>If <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-sparseImageInt64Atomics">{@code sparseImageInt64Atomics}</a> is enabled, <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shaderImageInt64Atomics">{@code shaderImageInt64Atomics}</a> <b>must</b> be enabled</li>
+ * <li>If <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-sparseImageFloat32Atomics">{@code sparseImageFloat32Atomics}</a> is enabled, <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shaderImageFloat32Atomics">{@code shaderImageFloat32Atomics}</a> <b>must</b> be enabled</li>
+ * <li>If <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-sparseImageFloat32AtomicAdd">{@code sparseImageFloat32AtomicAdd}</a> is enabled, <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shaderImageFloat32AtomicAdd">{@code shaderImageFloat32AtomicAdd}</a> <b>must</b> be enabled</li>
+ * <li>If <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-sparseImageFloat32AtomicMinMax">{@code sparseImageFloat32AtomicMinMax}</a> is enabled, <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-shaderImageFloat32AtomicMinMax">{@code shaderImageFloat32AtomicMinMax}</a> <b>must</b> be enabled</li>
+ * <li>If <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-descriptorBuffer">{@code descriptorBuffer}</a> is enabled, {@code ppEnabledExtensionNames} <b>must</b> not contain {@link AMDShaderFragmentMask VK_AMD_shader_fragment_mask}</li>
  * </ul>
  * 
  * <h5>Valid Usage (Implicit)</h5>
@@ -87,7 +87,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link VkPhysicalDeviceFeatures VkPhysicalDeviceFeatures} const * {@link #pEnabledFeatures};
  * }</code></pre>
  */
-public class VkDeviceCreateInfo extends Struct implements NativeResource {
+public class VkDeviceCreateInfo extends Struct<VkDeviceCreateInfo> implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -137,6 +137,15 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
         PENABLEDFEATURES = layout.offsetof(9);
     }
 
+    protected VkDeviceCreateInfo(long address, @Nullable ByteBuffer container) {
+        super(address, container);
+    }
+
+    @Override
+    protected VkDeviceCreateInfo create(long address, @Nullable ByteBuffer container) {
+        return new VkDeviceCreateInfo(address, container);
+    }
+
     /**
      * Creates a {@code VkDeviceCreateInfo} instance at the current position of the specified {@link ByteBuffer} container. Changes to the buffer's content will be
      * visible to the struct instance and vice versa.
@@ -159,27 +168,27 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
     /** reserved for future use. */
     @NativeType("VkDeviceCreateFlags")
     public int flags() { return nflags(address()); }
-    /** the unsigned integer size of the {@code pQueueCreateInfos} array. Refer to the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#devsandqueues-queue-creation">Queue Creation</a> section below for further details. */
+    /** the unsigned integer size of the {@code pQueueCreateInfos} array. Refer to the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#devsandqueues-queue-creation">Queue Creation</a> section below for further details. */
     @NativeType("uint32_t")
     public int queueCreateInfoCount() { return nqueueCreateInfoCount(address()); }
-    /** a pointer to an array of {@link VkDeviceQueueCreateInfo} structures describing the queues that are requested to be created along with the logical device. Refer to the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#devsandqueues-queue-creation">Queue Creation</a> section below for further details. */
+    /** a pointer to an array of {@link VkDeviceQueueCreateInfo} structures describing the queues that are requested to be created along with the logical device. Refer to the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#devsandqueues-queue-creation">Queue Creation</a> section below for further details. */
     @NativeType("VkDeviceQueueCreateInfo const *")
     public VkDeviceQueueCreateInfo.Buffer pQueueCreateInfos() { return npQueueCreateInfos(address()); }
     /** deprecated and ignored. */
     @NativeType("uint32_t")
     public int enabledLayerCount() { return nenabledLayerCount(address()); }
-    /** deprecated and ignored. See <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#extendingvulkan-layers-devicelayerdeprecation">Device Layer Deprecation</a>. */
+    /** deprecated and ignored. See <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#extendingvulkan-layers-devicelayerdeprecation">Device Layer Deprecation</a>. */
     @Nullable
     @NativeType("char const * const *")
     public PointerBuffer ppEnabledLayerNames() { return nppEnabledLayerNames(address()); }
     /** the number of device extensions to enable. */
     @NativeType("uint32_t")
     public int enabledExtensionCount() { return nenabledExtensionCount(address()); }
-    /** a pointer to an array of {@code enabledExtensionCount} null-terminated UTF-8 strings containing the names of extensions to enable for the created device. See the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#extendingvulkan-extensions">Extensions</a> section for further details. */
+    /** a pointer to an array of {@code enabledExtensionCount} null-terminated UTF-8 strings containing the names of extensions to enable for the created device. See the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#extendingvulkan-extensions">Extensions</a> section for further details. */
     @Nullable
     @NativeType("char const * const *")
     public PointerBuffer ppEnabledExtensionNames() { return nppEnabledExtensionNames(address()); }
-    /** {@code NULL} or a pointer to a {@link VkPhysicalDeviceFeatures} structure containing boolean indicators of all the features to be enabled. Refer to the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features">Features</a> section for further details. */
+    /** {@code NULL} or a pointer to a {@link VkPhysicalDeviceFeatures} structure containing boolean indicators of all the features to be enabled. Refer to the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features">Features</a> section for further details. */
     @Nullable
     @NativeType("VkPhysicalDeviceFeatures const *")
     public VkPhysicalDeviceFeatures pEnabledFeatures() { return npEnabledFeatures(address()); }
@@ -642,29 +651,29 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
 
     /** Returns a new {@code VkDeviceCreateInfo} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static VkDeviceCreateInfo malloc() {
-        return wrap(VkDeviceCreateInfo.class, nmemAllocChecked(SIZEOF));
+        return new VkDeviceCreateInfo(nmemAllocChecked(SIZEOF), null);
     }
 
     /** Returns a new {@code VkDeviceCreateInfo} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static VkDeviceCreateInfo calloc() {
-        return wrap(VkDeviceCreateInfo.class, nmemCallocChecked(1, SIZEOF));
+        return new VkDeviceCreateInfo(nmemCallocChecked(1, SIZEOF), null);
     }
 
     /** Returns a new {@code VkDeviceCreateInfo} instance allocated with {@link BufferUtils}. */
     public static VkDeviceCreateInfo create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return wrap(VkDeviceCreateInfo.class, memAddress(container), container);
+        return new VkDeviceCreateInfo(memAddress(container), container);
     }
 
     /** Returns a new {@code VkDeviceCreateInfo} instance for the specified memory address. */
     public static VkDeviceCreateInfo create(long address) {
-        return wrap(VkDeviceCreateInfo.class, address);
+        return new VkDeviceCreateInfo(address, null);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkDeviceCreateInfo createSafe(long address) {
-        return address == NULL ? null : wrap(VkDeviceCreateInfo.class, address);
+        return address == NULL ? null : new VkDeviceCreateInfo(address, null);
     }
 
     /**
@@ -673,7 +682,7 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkDeviceCreateInfo.Buffer malloc(int capacity) {
-        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -682,7 +691,7 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkDeviceCreateInfo.Buffer calloc(int capacity) {
-        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
+        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -692,7 +701,7 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
      */
     public static VkDeviceCreateInfo.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return wrap(Buffer.class, memAddress(container), capacity, container);
+        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
     }
 
     /**
@@ -702,13 +711,13 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkDeviceCreateInfo.Buffer create(long address, int capacity) {
-        return wrap(Buffer.class, address, capacity);
+        return new Buffer(address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkDeviceCreateInfo.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : wrap(Buffer.class, address, capacity);
+        return address == NULL ? null : new Buffer(address, capacity);
     }
 
     // -----------------------------------
@@ -736,7 +745,7 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
      * @param stack the stack from which to allocate
      */
     public static VkDeviceCreateInfo malloc(MemoryStack stack) {
-        return wrap(VkDeviceCreateInfo.class, stack.nmalloc(ALIGNOF, SIZEOF));
+        return new VkDeviceCreateInfo(stack.nmalloc(ALIGNOF, SIZEOF), null);
     }
 
     /**
@@ -745,7 +754,7 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
      * @param stack the stack from which to allocate
      */
     public static VkDeviceCreateInfo calloc(MemoryStack stack) {
-        return wrap(VkDeviceCreateInfo.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
+        return new VkDeviceCreateInfo(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
     }
 
     /**
@@ -755,7 +764,7 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkDeviceCreateInfo.Buffer malloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -765,7 +774,7 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static VkDeviceCreateInfo.Buffer calloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -840,9 +849,9 @@ public class VkDeviceCreateInfo extends Struct implements NativeResource {
         /**
          * Creates a new {@code VkDeviceCreateInfo.Buffer} instance backed by the specified container.
          *
-         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link VkDeviceCreateInfo#SIZEOF}, and its mark will be undefined.
+         * by {@link VkDeviceCreateInfo#SIZEOF}, and its mark will be undefined.</p>
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

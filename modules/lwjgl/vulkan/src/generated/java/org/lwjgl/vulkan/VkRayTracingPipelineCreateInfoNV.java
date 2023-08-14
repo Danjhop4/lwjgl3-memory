@@ -21,7 +21,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * 
  * <h5>Description</h5>
  * 
- * <p>The parameters {@code basePipelineHandle} and {@code basePipelineIndex} are described in more detail in <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#pipelines-pipeline-derivatives">Pipeline Derivatives</a>.</p>
+ * <p>The parameters {@code basePipelineHandle} and {@code basePipelineIndex} are described in more detail in <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#pipelines-pipeline-derivatives">Pipeline Derivatives</a>.</p>
  * 
  * <h5>Valid Usage</h5>
  * 
@@ -30,16 +30,16 @@ import static org.lwjgl.system.MemoryStack.*;
  * <li>If {@code flags} contains the {@link VK10#VK_PIPELINE_CREATE_DERIVATIVE_BIT PIPELINE_CREATE_DERIVATIVE_BIT} flag, and {@code basePipelineHandle} is {@link VK10#VK_NULL_HANDLE NULL_HANDLE}, {@code basePipelineIndex} <b>must</b> be a valid index into the calling command’s {@code pCreateInfos} parameter</li>
  * <li>If {@code flags} contains the {@link VK10#VK_PIPELINE_CREATE_DERIVATIVE_BIT PIPELINE_CREATE_DERIVATIVE_BIT} flag, {@code basePipelineIndex} <b>must</b> be -1 or {@code basePipelineHandle} <b>must</b> be {@link VK10#VK_NULL_HANDLE NULL_HANDLE}</li>
  * <li>If a push constant block is declared in a shader, a push constant range in {@code layout} <b>must</b> match both the shader stage and range</li>
- * <li>If a <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces-resources">resource variables</a> is declared in a shader, a descriptor slot in {@code layout} <b>must</b> match the shader stage</li>
- * <li>If a <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces-resources">resource variables</a> is declared in a shader, and the descriptor type is not {@link EXTMutableDescriptorType#VK_DESCRIPTOR_TYPE_MUTABLE_EXT DESCRIPTOR_TYPE_MUTABLE_EXT}, a descriptor slot in {@code layout} <b>must</b> match the descriptor type</li>
- * <li>If a <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces-resources">resource variables</a> is declared in a shader as an array, a descriptor slot in {@code layout} <b>must</b> match the descriptor count</li>
+ * <li>If a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces-resources">resource variables</a> is declared in a shader, a descriptor slot in {@code layout} <b>must</b> match the shader stage</li>
+ * <li>If a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces-resources">resource variables</a> is declared in a shader, and the descriptor type is not {@link EXTMutableDescriptorType#VK_DESCRIPTOR_TYPE_MUTABLE_EXT DESCRIPTOR_TYPE_MUTABLE_EXT}, a descriptor slot in {@code layout} <b>must</b> match the descriptor type</li>
+ * <li>If a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces-resources">resource variables</a> is declared in a shader as an array, a descriptor slot in {@code layout} <b>must</b> match the descriptor count</li>
  * </ul>
  * 
  * <ul>
- * <li>The shader code for the entry points identified by {@code pStages}, and the rest of the state identified by this structure <b>must</b> adhere to the pipeline linking rules described in the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces">Shader Interfaces</a> chapter</li>
+ * <li>The shader code for the entry points identified by {@code pStages}, and the rest of the state identified by this structure <b>must</b> adhere to the pipeline linking rules described in the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces">Shader Interfaces</a> chapter</li>
  * <li>The number of resources in {@code layout} accessible to each shader stage that is used by the pipeline <b>must</b> be less than or equal to {@link VkPhysicalDeviceLimits}{@code ::maxPerStageResources}</li>
  * <li>{@code flags} <b>must</b> not include {@link NVDeviceGeneratedCommands#VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV}</li>
- * <li>If the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-pipelineCreationCacheControl">{@code pipelineCreationCacheControl}</a> feature is not enabled, {@code flags} <b>must</b> not include {@link VK13#VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT} or {@link VK13#VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT}</li>
+ * <li>If the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#features-pipelineCreationCacheControl">{@code pipelineCreationCacheControl}</a> feature is not enabled, {@code flags} <b>must</b> not include {@link VK13#VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT} or {@link VK13#VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT}</li>
  * <li>The {@code stage} member of at least one element of {@code pStages} <b>must</b> be {@link KHRRayTracingPipeline#VK_SHADER_STAGE_RAYGEN_BIT_KHR SHADER_STAGE_RAYGEN_BIT_KHR}</li>
  * <li>{@code flags} <b>must</b> not include {@link KHRPipelineLibrary#VK_PIPELINE_CREATE_LIBRARY_BIT_KHR PIPELINE_CREATE_LIBRARY_BIT_KHR}</li>
  * <li>{@code maxRecursionDepth} <b>must</b> be less than or equal to {@link VkPhysicalDeviceRayTracingPropertiesNV}{@code ::maxRecursionDepth}</li>
@@ -94,7 +94,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     int32_t {@link #basePipelineIndex};
  * }</code></pre>
  */
-public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeResource {
+public class VkRayTracingPipelineCreateInfoNV extends Struct<VkRayTracingPipelineCreateInfoNV> implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -147,6 +147,15 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
         BASEPIPELINEINDEX = layout.offsetof(10);
     }
 
+    protected VkRayTracingPipelineCreateInfoNV(long address, @Nullable ByteBuffer container) {
+        super(address, container);
+    }
+
+    @Override
+    protected VkRayTracingPipelineCreateInfoNV create(long address, @Nullable ByteBuffer container) {
+        return new VkRayTracingPipelineCreateInfoNV(address, container);
+    }
+
     /**
      * Creates a {@code VkRayTracingPipelineCreateInfoNV} instance at the current position of the specified {@link ByteBuffer} container. Changes to the buffer's content will be
      * visible to the struct instance and vice versa.
@@ -181,7 +190,7 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
     /** a pointer to an array of {@link VkRayTracingShaderGroupCreateInfoNV} structures describing the set of the shader stages to be included in each shader group in the ray tracing pipeline. */
     @NativeType("VkRayTracingShaderGroupCreateInfoNV const *")
     public VkRayTracingShaderGroupCreateInfoNV.Buffer pGroups() { return npGroups(address()); }
-    /** the <a target="_blank" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#ray-tracing-recursion-depth">maximum recursion depth</a> of shaders executed by this pipeline. */
+    /** the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#ray-tracing-recursion-depth">maximum recursion depth</a> of shaders executed by this pipeline. */
     @NativeType("uint32_t")
     public int maxRecursionDepth() { return nmaxRecursionDepth(address()); }
     /** the description of binding locations used by both the pipeline and descriptor sets used with the pipeline. */
@@ -260,29 +269,29 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
 
     /** Returns a new {@code VkRayTracingPipelineCreateInfoNV} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static VkRayTracingPipelineCreateInfoNV malloc() {
-        return wrap(VkRayTracingPipelineCreateInfoNV.class, nmemAllocChecked(SIZEOF));
+        return new VkRayTracingPipelineCreateInfoNV(nmemAllocChecked(SIZEOF), null);
     }
 
     /** Returns a new {@code VkRayTracingPipelineCreateInfoNV} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static VkRayTracingPipelineCreateInfoNV calloc() {
-        return wrap(VkRayTracingPipelineCreateInfoNV.class, nmemCallocChecked(1, SIZEOF));
+        return new VkRayTracingPipelineCreateInfoNV(nmemCallocChecked(1, SIZEOF), null);
     }
 
     /** Returns a new {@code VkRayTracingPipelineCreateInfoNV} instance allocated with {@link BufferUtils}. */
     public static VkRayTracingPipelineCreateInfoNV create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return wrap(VkRayTracingPipelineCreateInfoNV.class, memAddress(container), container);
+        return new VkRayTracingPipelineCreateInfoNV(memAddress(container), container);
     }
 
     /** Returns a new {@code VkRayTracingPipelineCreateInfoNV} instance for the specified memory address. */
     public static VkRayTracingPipelineCreateInfoNV create(long address) {
-        return wrap(VkRayTracingPipelineCreateInfoNV.class, address);
+        return new VkRayTracingPipelineCreateInfoNV(address, null);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkRayTracingPipelineCreateInfoNV createSafe(long address) {
-        return address == NULL ? null : wrap(VkRayTracingPipelineCreateInfoNV.class, address);
+        return address == NULL ? null : new VkRayTracingPipelineCreateInfoNV(address, null);
     }
 
     /**
@@ -291,7 +300,7 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
      * @param capacity the buffer capacity
      */
     public static VkRayTracingPipelineCreateInfoNV.Buffer malloc(int capacity) {
-        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -300,7 +309,7 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
      * @param capacity the buffer capacity
      */
     public static VkRayTracingPipelineCreateInfoNV.Buffer calloc(int capacity) {
-        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
+        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -310,7 +319,7 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
      */
     public static VkRayTracingPipelineCreateInfoNV.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return wrap(Buffer.class, memAddress(container), capacity, container);
+        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
     }
 
     /**
@@ -320,13 +329,13 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
      * @param capacity the buffer capacity
      */
     public static VkRayTracingPipelineCreateInfoNV.Buffer create(long address, int capacity) {
-        return wrap(Buffer.class, address, capacity);
+        return new Buffer(address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static VkRayTracingPipelineCreateInfoNV.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : wrap(Buffer.class, address, capacity);
+        return address == NULL ? null : new Buffer(address, capacity);
     }
 
     // -----------------------------------
@@ -354,7 +363,7 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
      * @param stack the stack from which to allocate
      */
     public static VkRayTracingPipelineCreateInfoNV malloc(MemoryStack stack) {
-        return wrap(VkRayTracingPipelineCreateInfoNV.class, stack.nmalloc(ALIGNOF, SIZEOF));
+        return new VkRayTracingPipelineCreateInfoNV(stack.nmalloc(ALIGNOF, SIZEOF), null);
     }
 
     /**
@@ -363,7 +372,7 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
      * @param stack the stack from which to allocate
      */
     public static VkRayTracingPipelineCreateInfoNV calloc(MemoryStack stack) {
-        return wrap(VkRayTracingPipelineCreateInfoNV.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
+        return new VkRayTracingPipelineCreateInfoNV(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
     }
 
     /**
@@ -373,7 +382,7 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
      * @param capacity the buffer capacity
      */
     public static VkRayTracingPipelineCreateInfoNV.Buffer malloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -383,7 +392,7 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
      * @param capacity the buffer capacity
      */
     public static VkRayTracingPipelineCreateInfoNV.Buffer calloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -457,9 +466,9 @@ public class VkRayTracingPipelineCreateInfoNV extends Struct implements NativeRe
         /**
          * Creates a new {@code VkRayTracingPipelineCreateInfoNV.Buffer} instance backed by the specified container.
          *
-         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link VkRayTracingPipelineCreateInfoNV#SIZEOF}, and its mark will be undefined.
+         * by {@link VkRayTracingPipelineCreateInfoNV#SIZEOF}, and its mark will be undefined.</p>
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */
